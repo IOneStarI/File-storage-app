@@ -1,0 +1,10 @@
+@{ var action = ViewContext.RouteData.Values["action"]?.ToString(); }
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>@ViewData["Title"] · FileSpace</title><link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /><script src="~/js/site.js" asp-append-version="true" defer></script></head><body>
+@if (User.Identity?.IsAuthenticated == true) {
+<aside class="sidebar"><a class="brand" asp-controller="Files" asp-action="Dashboard"><span class="brand-icon">▧</span> FileSpace<span class="brand-dot">.</span></a><p class="nav-label">YOUR WORKSPACE</p><nav><a class="@(action == "Dashboard" ? "active" : "")" asp-controller="Files" asp-action="Dashboard"><span>◫</span> Dashboard</a><a class="@(action == "Upload" ? "active" : "")" asp-controller="Files" asp-action="Upload"><span>↑</span> Upload files</a><a class="@(action == "Index" ? "active" : "")" asp-controller="Files" asp-action="Index"><span>▤</span> My files</a></nav><div class="sidebar-bottom"><div class="private-note"><span>♧</span><strong>Your own little corner.</strong><p>Your files are private and only accessible to you.</p></div><div class="profile"><span class="avatar">@(User.Identity.Name?.Substring(0, 1).ToUpper())</span><div><strong>@User.Identity.Name</strong><small>Personal account</small></div></div><form asp-controller="Account" asp-action="Logout" method="post"><button class="logout">Sign out ↗</button></form></div></aside>
+}
+<main class="@(User.Identity?.IsAuthenticated == true ? "workspace" : "auth-workspace")">
+@if (TempData["Success"] is string success) { <div class="alert success" role="status">✓ @success</div> }
+@if (TempData["Error"] is string error) { <div class="alert error" role="alert">@error</div> }
+@RenderBody()
+</main></body></html>
