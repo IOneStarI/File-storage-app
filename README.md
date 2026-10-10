@@ -8,7 +8,7 @@ The application stores files locally and saves user accounts and file metadata i
 
 My purpose for creating this software was to practice the Model-View-Controller pattern, work with a relational database, and understand how to handle file uploads and authenticated requests. I also wanted to improve my ability to build a responsive interface and verify application behavior through end-to-end tests.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/bzE-Y7ZJ0Ic?si=_cmweJVQLKYAMeFV)
 
 Replace the placeholder above with a link to a one-minute YouTube demonstration showing the application running and a walkthrough of the code.
 
